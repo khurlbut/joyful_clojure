@@ -93,70 +93,215 @@
   (get-full-name {:first-name \"Daniel\" :last-name \"King\"})
   -> \"Daniel King\""
   [user]
-  ;; TODO
+    (let [first-name (get user :first-name)
+          last-name (get user :last-name)]
+      (str first-name " " last-name)
+    )
   )
 
-(defn get-ids
-  "Given a vector of users, returns a list of the users' ids.
+"Given a vector of users, returns a list of the users' ids."
 
-  Bonus points: Try doing this with loop/recur and with map."
+(defn get-ids-0
+  "Solution 0 - using loop/recur"
   [users]
-  ;; TODO
-  )
+  (loop [remaining-users users
+         user-ids []]
+    (if (empty? remaining-users)
+      user-ids
+      (let [user (first remaining-users)
+            next-remaining-users (rest remaining-users)
+            next-user-ids (conj user-ids (get user :id))]
+         (recur next-remaining-users next-user-ids)))))
 
-(defn http-handler
-  "Given an http request, returns the response that should be
-  sent back to the client.
+(defn get-ids-1
+  "Solution 1 - less verbose loop/recur"
+  [users]
+  (loop [remaining-users users
+         ids []]
+    (if (empty? remaining-users)
+      ids
+      (recur (rest remaining-users) (conj ids (get (first remaining-users) :id))))))
 
-  Example request:
-  {:method :GET :url \"/hello\"}
+(defn get-ids-2
+  "Solution 2 - using map (returns 'lazy sequence)"
+  [users]
+  (map (fn [user] (get user :id)) users))
 
-  Example response:
-  {:status 200 :body \"Hello world\"}
+(defn get-ids-3
+  "Solution 3 - using into map (returns concrete vector)"
+  [users]
+  (into [] (map (fn [user] (get user :id)) users)))
 
-  The handler should support the following routes:
-  - GET /hello (responds with \"Hello world\")
-  - GET /goodbye (responds with \"Goodbye world\")
+(defn get-ids-4
+  "Solution 4 - using thread-last macro (returns concrete vector)"
+  [users]
+  (->> users
+       (map (fn [user] (get user :id)))
+       (into [])))
 
-  Any other request should result in a 404 response
-  with the text \"Not found\" in the body."
+ (defn get-ids-5
+   "Solution 5 - Even Better! Thread-last macro with keyword used as function!"
+   [users]
+   (->> users
+        (map :id)
+        (into [])))
+
+"Given an http request, returns the response that should be
+sent back to the client.
+
+Example request:
+{:method :GET :url \"/hello\"}
+
+Example response:
+{:status 200 :body \"Hello world\"}
+
+The handler should support the following routes:
+- GET /hello (responds with \"Hello world\")
+- GET /goodbye (responds with \"Goodbye world\")
+
+Any other request should result in a 404 response
+with the text \"Not found\" in the body."
+
+(defn http-handler-0
+  "Solution 0 - Straigt forward usage of 'cond' (multi-branch 'if')"
   [req]
-  ;; TODO
-  )
+  (let [method (get req :method)
+        url (get req :url)]
+    (cond
+       (and (= method :GET) (= url "/hello"))
+          {:status 200 :body "Hello World!"}
+       (and (= method :GET) (= url "/goodbye"))
+          {:status 200 :body "Goodbye World!"}
+       :else
+          {:status 404 :body "Not Found"})))
 
-(defn total-of-positives
-  "Gets the sum of a sequence of numbers. Non-positive numbers
-  should not be included in the sum.
+(defn http-handler-1
+  "Solution 1 - better way to extract the request params ('desructuring')"
+  [req]
+  (let [{:keys [method url]} req]
+    (cond
+      (and (= method :GET) (= url "/hello"))
+        {:status 200 :body "Hello World!"}
+      (and (= method :GET) (= url "/goodbye"))
+        {:status 200 :body "Goodbye World!"}
+      :else
+        {:status 404 :body "Not Found"})))
 
-  Example:
-  (total-of-positives [1 5 -10 3 -2])
-  -> 9"
+(defmulti http-handler-2
+  "Solution 2 - Use a 'multimethod'"
+  (fn [req] [(get req :method) (get req :url)]))
+
+(defmethod http-handler-2 [:GET "/hello"]
+  [req]
+  {:status 200 :body "Hello World!"})
+
+(defmethod http-handler-2 [:GET "/goodbye"]
+  [req]
+  {:status 200 :body "Goodbye World!"})
+
+(defmethod http-handler-2 :default
+  [req]
+  {:status 404 :body "Not Found"})
+
+"Gets the sum of a sequence of numbers. Non-positive numbers
+should not be included in the sum.
+
+Example:
+(total-of-positives [1 5 -10 3 -2])
+-> 9"
+(defn total-of-positives-0
   [nums]
-  ;; TODO
-  )
+  (loop [remaining nums
+         total 0]
+    (if (empty? remaining)
+      total
+      (let [next-num (first remaining)
+            next-remaining (rest remaining)
+            next-total (if (> next-num 0)
+              (+ total next-num)
+              total)]
+        (recur next-remaining next-total)))))
 
-(defn is-palindrome
-  "Determines whether or not a given string is a palindrome.
+(defn total-of-positives-1
+  [nums]
+  (->> nums
+    (filter (fn [num] (> num 0)))
+    (reduce +)))
 
-  Examples:
-  (is-palindrome \"Hello\") -> false
-  (is-palindrome \"abcba\") -> true
-  Challenge: (is-palindrome \"Taco Cat\") -> true"
+
+"Determines whether or not a given string is a palindrome.
+
+Examples:
+(is-palindrome \"Hello\") -> false
+(is-palindrome \"abcba\") -> true
+Challenge: (is-palindrome \"Taco Cat\") -> true"
+(defn is-palindrome-0
+  "Solution 0 - my first attempt - only partially works.
+   Fails on Taco Cat - attempt to manage whitespace does not work!."
   [str]
-  ;; TODO
-  )
+  (if (= str (string/reverse (string/lower-case (string/replace str " " ""))))
+    true
+    false))
+
+(defn is-palindrome-1
+  "Solution 1 - uses generic recursion (no recur/loop!)
+   Fails on Taco Cat - makes no attempt to manage caps/whitespace)"
+  [str]
+  (if (empty? str)
+    true
+    (and (= (first str) (last str))
+         (is-palindrome-1 (butlast (rest str))))))
+
+(defn is-palindrome-2
+  "Solution 2 - use built in reverse function (requires sequence)
+   Fails on Taco Cat - makes no attempt to manage caps/whitespace"
+  [str]
+  (= (sequence str) (reverse str)))
+
+(defn is-palindrome-3
+  "Solution 3 - same approach as my first attempt, but more explicit.
+   Copied from solutions.clj.
+   Notice the use of thread-first macro!"
+  [str]
+  (let [cleaned-string (-> str
+                           (string/upper-case)
+                           (string/replace " " ""))]
+  (= (sequence cleaned-string) (reverse cleaned-string))))
+
+(defn is-palindrome-4
+  "Solution 4 - Use reverse from sting package. Removes the need for sequence."
+  [str]
+  (let [cleaned-string (-> str
+                           (string/upper-case)
+                           (string/replace " " ""))]
+  (= cleaned-string (string/reverse cleaned-string))))
+
+"Takes a word and a number, and rotates each letter in the word
+that many characters forward in the alphabet, wrapping around from
+Z back to A.
+
+Examples:
+(caesar-encrypt \"abc\" 3) -> \"def\"
+(caesar-encrypt \"Zebra\" 4) -> \"Difve\"
+
+Note: The name of the function comes from the fact that this transformation
+is known as a Caesar Cipher."
+
+(def alphabet "abcdefghijklmnopqrstuvwxyz")
+
+(defn rotate-character
+  [character rotation-num]
+  (let [lower-character (string/lower-case character)
+       index (string/index-of alphabet lower-character)
+       rotated-index (mod (+ index rotation-num) (count alphabet))
+       rotated-character (str (nth alphabet rotated-index))]
+    (println (= (str character) (str lower-character)))
+    (if (= character lower-character)
+      rotated-character
+      (string/upper-case rotated-character))))
 
 (defn caesar-encrypt
-  "Takes a word and a number, and rotates each letter in the word
-  that many characters forward in the alphabet, wrapping around from
-  Z back to A.
-
-  Examples:
-  (caesar-encrypt \"abc\" 3) -> \"def\"
-  (caesar-encrypt \"Zebra\" 4) -> \"Difve\"
-
-  Note: The name of the function comes from the fact that this transformation
-  is known as a Caesar Cipher."
   [word num-places]
-  ;; TODO
-  )
+  (->> word
+       (map (fn [char] (rotate-character (str char) num-places)))
+       (string/join "")))
