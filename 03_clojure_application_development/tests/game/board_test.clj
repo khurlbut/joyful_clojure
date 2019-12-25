@@ -410,4 +410,5 @@
     (test-get-row-vector-from-random-square)
     (test-get-col-vector-from-base-square)
     (test-get-col-vector-from-random-square)
+    (test-get-south-east-diag-vector)
 )

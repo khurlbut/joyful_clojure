@@ -1,25 +1,28 @@
 (ns game.board)
 
-(def dimensions
+(def dims
   {
     :rows 8
     :cols 8})
 
+(def max-square-index
+  (* (dims :rows) (dims :cols)))
+
 (defn get-square [s]
   (cond
     (< s 0) nil
-    (> s 63) nil
+    (> s max-square-index) nil
     :else s))
 
 (defn get-row-num [s]
   (let [s (get-square s)
-        cols (float (dimensions :cols))
+        cols (float (dims :cols))
         row (/ s cols)]
         (int row)))
 
 (defn get-col-num [s]
   (let [s (get-square s)
-        cols (dimensions :cols)]
+        cols (dims :cols)]
   (mod s cols)))
 
 (defn get-south-east-diag-num [s]
