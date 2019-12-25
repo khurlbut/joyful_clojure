@@ -22,17 +22,20 @@
         cols (dimensions :cols)]
   (mod sq cols)))
 
+(defn get-south-east-diag-num [sq]
+  (+ (get-row-num sq) (get-col-num sq)))
+
 (defn get-row-vector [sq]
   (let [row-num (get-row-num sq)]
     (case row-num
-      0 [ 0  1  2  3  4  5  6  7]
-      1 [ 8  9 10 11 12 13 14 15]
-      2 [16 17 18 19 20 21 22 23]
-      3 [24 25 26 27 28 29 30 31]
-      4 [32 33 34 35 36 37 38 39]
-      5 [40 41 42 43 44 45 46 47]
+      7 [56 57 58 59 60 61 62 63]
       6 [48 49 50 51 52 53 54 55]
-      7 [56 57 58 59 60 61 62 63])))
+      5 [40 41 42 43 44 45 46 47]
+      4 [32 33 34 35 36 37 38 39]
+      3 [24 25 26 27 28 29 30 31]
+      2 [16 17 18 19 20 21 22 23]
+      1 [ 8  9 10 11 12 13 14 15]
+      0 [ 0  1  2  3  4  5  6  7])))
 
 (defn get-col-vector [sq]
   (let [col-num (get-col-num sq)]

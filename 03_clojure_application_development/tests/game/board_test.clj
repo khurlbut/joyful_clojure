@@ -32,6 +32,151 @@
     (is (= (get-col-num 18) 2)))
 )
 
+(deftest test-get-south-east-diag-num
+  (testing "square in row 0 col 0 should return 0"
+    (is (= (get-south-east-diag-num 0) 0)))
+
+  (testing "square in row 0 col 1 should return 1"
+    (is (= (get-south-east-diag-num 1) 1)))
+  (testing "square in row 1 col 0 should return 1"
+    (is (= (get-south-east-diag-num 8) 1)))
+
+  (testing "square in row 0 col 2 should return 2"
+    (is (= (get-south-east-diag-num 2) 2)))
+  (testing "square in row 1 col 1 should return 2"
+    (is (= (get-south-east-diag-num 9) 2)))
+  (testing "square in row 2 col 0 should return 2"
+    (is (= (get-south-east-diag-num 16) 2)))
+
+  (testing "square in row 0 col 3 should return 3"
+    (is (= (get-south-east-diag-num 3) 3)))
+  (testing "square in row 1 col 2 should return 3"
+    (is (= (get-south-east-diag-num 10) 3)))
+  (testing "square in row 2 col 1 should return 3"
+    (is (= (get-south-east-diag-num 17) 3)))
+  (testing "square in row 3 col 0 should return 3"
+    (is (= (get-south-east-diag-num 24) 3)))
+
+  (testing "square in row 0 col 4 should return 4"
+    (is (= (get-south-east-diag-num 4) 4)))
+  (testing "square in row 1 col 3 should return 4"
+    (is (= (get-south-east-diag-num 11) 4)))
+  (testing "square in row 2 col 2 should return 4"
+    (is (= (get-south-east-diag-num 18) 4)))
+  (testing "square in row 3 col 1 should return 4"
+    (is (= (get-south-east-diag-num 25) 4)))
+  (testing "square in row 4 col 0 should return 4"
+    (is (= (get-south-east-diag-num 32) 4)))
+
+  (testing "square in row 0 col 5 should return 5"
+    (is (= (get-south-east-diag-num 5) 5)))
+  (testing "square in row 1 col 4 should return 5"
+    (is (= (get-south-east-diag-num 12) 5)))
+  (testing "square in row 2 col 3 should return 5"
+    (is (= (get-south-east-diag-num 19) 5)))
+  (testing "square in row 3 col 2 should return 5"
+    (is (= (get-south-east-diag-num 26) 5)))
+  (testing "square in row 4 col 1 should return 5"
+    (is (= (get-south-east-diag-num 33) 5)))
+  (testing "square in row 5 col 0 should return 5"
+    (is (= (get-south-east-diag-num 40) 5)))
+
+  (testing "square in row 0 col 6 should return 6"
+    (is (= (get-south-east-diag-num 6) 6)))
+  (testing "square in row 1 col 5 should return 6"
+    (is (= (get-south-east-diag-num 13) 6)))
+  (testing "square in row 2 col 4 should return 6"
+    (is (= (get-south-east-diag-num 20) 6)))
+  (testing "square in row 3 col 3 should return 6"
+    (is (= (get-south-east-diag-num 27) 6)))
+  (testing "square in row 4 col 2 should return 6"
+    (is (= (get-south-east-diag-num 34) 6)))
+  (testing "square in row 5 col 1 should return 6"
+    (is (= (get-south-east-diag-num 41) 6)))
+  (testing "square in row 6 col 0 should return 6"
+    (is (= (get-south-east-diag-num 48) 6)))
+
+  (testing "square in row 0 col 7 should return 7"
+    (is (= (get-south-east-diag-num 7) 7)))
+  (testing "square in row 1 col 6 should return 7"
+    (is (= (get-south-east-diag-num 14) 7)))
+  (testing "square in row 2 col 5 should return 7"
+    (is (= (get-south-east-diag-num 21) 7)))
+  (testing "square in row 3 col 4 should return 7"
+    (is (= (get-south-east-diag-num 28) 7)))
+  (testing "square in row 4 col 3 should return 7"
+    (is (= (get-south-east-diag-num 35) 7)))
+  (testing "square in row 5 col 2 should return 7"
+    (is (= (get-south-east-diag-num 42) 7)))
+  (testing "square in row 6 col 1 should return 7"
+    (is (= (get-south-east-diag-num 49) 7)))
+  (testing "square in row 7 col 0 should return 7"
+    (is (= (get-south-east-diag-num 56) 7)))
+
+  (testing "square in row 1 col 7 should return 8"
+    (is (= (get-south-east-diag-num 15) 8)))
+  (testing "square in row 2 col 6 should return 8"
+    (is (= (get-south-east-diag-num 22) 8)))
+  (testing "square in row 3 col 5 should return 8"
+    (is (= (get-south-east-diag-num 29) 8)))
+  (testing "square in row 4 col 4 should return 8"
+    (is (= (get-south-east-diag-num 36) 8)))
+  (testing "square in row 5 col 3 should return 8"
+    (is (= (get-south-east-diag-num 43) 8)))
+  (testing "square in row 6 col 2 should return 8"
+    (is (= (get-south-east-diag-num 50) 8)))
+  (testing "square in row 7 col 1 should return 8"
+    (is (= (get-south-east-diag-num 57) 8)))
+
+  (testing "square in row 2 col 7 should return 9"
+    (is (= (get-south-east-diag-num 23) 9)))
+  (testing "square in row 3 col 6 should return 9"
+    (is (= (get-south-east-diag-num 30) 9)))
+  (testing "square in row 4 col 5 should return 9"
+    (is (= (get-south-east-diag-num 37) 9)))
+  (testing "square in row 5 col 4 should return 9"
+    (is (= (get-south-east-diag-num 44) 9)))
+  (testing "square in row 6 col 3 should return 9"
+    (is (= (get-south-east-diag-num 51) 9)))
+  (testing "square in row 7 col 2 should return 9"
+    (is (= (get-south-east-diag-num 58) 9)))
+
+  (testing "square in row 3 col 7 should return 10"
+    (is (= (get-south-east-diag-num 31) 10)))
+  (testing "square in row 4 col 6 should return 10"
+    (is (= (get-south-east-diag-num 38) 10)))
+  (testing "square in row 5 col 5 should return 10"
+    (is (= (get-south-east-diag-num 45) 10)))
+  (testing "square in row 6 col 4 should return 10"
+    (is (= (get-south-east-diag-num 52) 10)))
+  (testing "square in row 7 col 3 should return 10"
+    (is (= (get-south-east-diag-num 59) 10)))
+
+  (testing "square in row 4 col 7 should return 11"
+    (is (= (get-south-east-diag-num 39) 11)))
+  (testing "square in row 5 col 6 should return 11"
+    (is (= (get-south-east-diag-num 46) 11)))
+  (testing "square in row 6 col 5 should return 11"
+    (is (= (get-south-east-diag-num 53) 11)))
+  (testing "square in row 7 col 4 should return 11"
+    (is (= (get-south-east-diag-num 60) 11)))
+
+  (testing "square in row 5 col 7 should return 12"
+    (is (= (get-south-east-diag-num 47) 12)))
+  (testing "square in row 6 col 6 should return 12"
+    (is (= (get-south-east-diag-num 54) 12)))
+  (testing "square in row 7 col 5 should return 12"
+    (is (= (get-south-east-diag-num 61) 12)))
+
+  (testing "square in row 6 col 7 should return 13"
+    (is (= (get-south-east-diag-num 55) 13)))
+  (testing "square in row 7 col 6 should return 13"
+    (is (= (get-south-east-diag-num 62) 13)))
+
+  (testing "square in row 7 col 7 should return 14"
+    (is (= (get-south-east-diag-num 63) 14)))
+)
+
 (deftest test-get-row-vector-from-base-square
   (testing "should return vector for square 0"
     (is (= (get-row-vector 0) [0 1 2 3 4 5 6 7])))
@@ -116,6 +261,7 @@
 (deftest test-all-game-board
     (test-get-row-num)
     (test-get-col-num)
+    (test-get-south-east-diag-num)
     (test-get-row-vector-from-base-square)
     (test-get-row-vector-from-random-square)
     (test-get-col-vector-from-base-square)
