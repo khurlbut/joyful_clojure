@@ -13,8 +13,8 @@
 
 (defn get-row-num [s]
   (let [s (get-square s)
-        rows (float (dimensions :rows))
-        row (/ s rows)]
+        cols (float (dimensions :cols))
+        row (/ s cols)]
         (int row)))
 
 (defn get-col-num [s]
