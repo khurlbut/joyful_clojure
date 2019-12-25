@@ -23,7 +23,7 @@
   (mod sq cols)))
 
 (defn get-south-east-diag-num [sq]
-  (+ (get-row-num sq) (get-col-num sq)))
+  (+ (get-col-num sq) (get-row-num sq)))
 
 (defn get-row-vector [sq]
   (let [row-num (get-row-num sq)]
