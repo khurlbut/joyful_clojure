@@ -5,13 +5,13 @@
     :rows 8
     :cols 8})
 
-(def max-square-index
+(def max-board-index
   (* (dims :rows) (dims :cols)))
 
 (defn get-square [s]
   (cond
     (< s 0) nil
-    (> s max-square-index) nil
+    (> s max-board-index) nil
     :else s))
 
 (defn get-row-num [s]
