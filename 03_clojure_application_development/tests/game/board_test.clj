@@ -397,294 +397,294 @@
     (is (= (get-col-vector 47) [7 15 23 31 39 47 55 63])))
 )
 
-(deftest test-get-south-east-diag-vector
+(deftest test-get-south-east-vector
   (testing "should return vector for square 0"
-    (is (= (get-south-east-diag-vector 0) [0])))
+    (is (= (get-south-east-vector 0) [0])))
 
   (testing "should return vector for square 1"
-    (is (= (get-south-east-diag-vector 1) [8 1])))
+    (is (= (get-south-east-vector 1) [8 1])))
   (testing "should return vector for square 8"
-    (is (= (get-south-east-diag-vector 8) [8 1])))
+    (is (= (get-south-east-vector 8) [8 1])))
 
   (testing "should return vector for square 2"
-    (is (= (get-south-east-diag-vector 2) [16 9 2])))
+    (is (= (get-south-east-vector 2) [16 9 2])))
   (testing "should return vector for square 9"
-    (is (= (get-south-east-diag-vector 9) [16 9 2])))
+    (is (= (get-south-east-vector 9) [16 9 2])))
   (testing "should return vector for square 16"
-    (is (= (get-south-east-diag-vector 16) [16 9 2])))
+    (is (= (get-south-east-vector 16) [16 9 2])))
 
   (testing "should return vector for square 3"
-    (is (= (get-south-east-diag-vector 3) [24 17 10 3])))
+    (is (= (get-south-east-vector 3) [24 17 10 3])))
   (testing "should return vector for square 10"
-    (is (= (get-south-east-diag-vector 10) [24 17 10 3])))
+    (is (= (get-south-east-vector 10) [24 17 10 3])))
   (testing "should return vector for square 17"
-    (is (= (get-south-east-diag-vector 17) [24 17 10 3])))
+    (is (= (get-south-east-vector 17) [24 17 10 3])))
   (testing "should return vector for square 24"
-    (is (= (get-south-east-diag-vector 24) [24 17 10 3])))
+    (is (= (get-south-east-vector 24) [24 17 10 3])))
 
   (testing "should return vector for square 4"
-    (is (= (get-south-east-diag-vector 4) [32 25 18 11 4])))
+    (is (= (get-south-east-vector 4) [32 25 18 11 4])))
   (testing "should return vector for square 11"
-    (is (= (get-south-east-diag-vector 11) [32 25 18 11 4])))
+    (is (= (get-south-east-vector 11) [32 25 18 11 4])))
   (testing "should return vector for square 18"
-    (is (= (get-south-east-diag-vector 18) [32 25 18 11 4])))
+    (is (= (get-south-east-vector 18) [32 25 18 11 4])))
   (testing "should return vector for square 25"
-    (is (= (get-south-east-diag-vector 25) [32 25 18 11 4])))
+    (is (= (get-south-east-vector 25) [32 25 18 11 4])))
   (testing "should return vector for square 32"
-    (is (= (get-south-east-diag-vector 32) [32 25 18 11 4])))
+    (is (= (get-south-east-vector 32) [32 25 18 11 4])))
 
   (testing "should return vector for square 5"
-    (is (= (get-south-east-diag-vector 5) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 5) [40 33 26 19 12 5])))
   (testing "should return vector for square 12"
-    (is (= (get-south-east-diag-vector 12) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 12) [40 33 26 19 12 5])))
   (testing "should return vector for square 19"
-    (is (= (get-south-east-diag-vector 19) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 19) [40 33 26 19 12 5])))
   (testing "should return vector for square 26"
-    (is (= (get-south-east-diag-vector 26) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 26) [40 33 26 19 12 5])))
   (testing "should return vector for square 33"
-    (is (= (get-south-east-diag-vector 33) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 33) [40 33 26 19 12 5])))
   (testing "should return vector for square 40"
-    (is (= (get-south-east-diag-vector 40) [40 33 26 19 12 5])))
+    (is (= (get-south-east-vector 40) [40 33 26 19 12 5])))
 
   (testing "should return vector for square 6"
-    (is (= (get-south-east-diag-vector 6) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 6) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 13"
-    (is (= (get-south-east-diag-vector 13) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 13) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 20"
-    (is (= (get-south-east-diag-vector 20) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 20) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 27"
-    (is (= (get-south-east-diag-vector 27) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 27) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 34"
-    (is (= (get-south-east-diag-vector 34) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 34) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 41"
-    (is (= (get-south-east-diag-vector 41) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 41) [48 41 34 27 20 13 6])))
   (testing "should return vector for square 48"
-    (is (= (get-south-east-diag-vector 48) [48 41 34 27 20 13 6])))
+    (is (= (get-south-east-vector 48) [48 41 34 27 20 13 6])))
 
   (testing "should return vector for square 7"
-    (is (= (get-south-east-diag-vector 7) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 7) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 14"
-    (is (= (get-south-east-diag-vector 14) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 14) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 21"
-    (is (= (get-south-east-diag-vector 21) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 21) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 28"
-    (is (= (get-south-east-diag-vector 28) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 28) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 35"
-    (is (= (get-south-east-diag-vector 35) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 35) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 42"
-    (is (= (get-south-east-diag-vector 42) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 42) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 49"
-    (is (= (get-south-east-diag-vector 49) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 49) [56 49 42 35 28 21 14 7])))
   (testing "should return vector for square 56"
-    (is (= (get-south-east-diag-vector 56) [56 49 42 35 28 21 14 7])))
+    (is (= (get-south-east-vector 56) [56 49 42 35 28 21 14 7])))
 
   (testing "should return vector for square 15"
-    (is (= (get-south-east-diag-vector 15) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 15) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 22"
-    (is (= (get-south-east-diag-vector 22) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 22) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 29"
-    (is (= (get-south-east-diag-vector 29) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 29) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 36"
-    (is (= (get-south-east-diag-vector 36) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 36) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 43"
-    (is (= (get-south-east-diag-vector 43) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 43) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 50"
-    (is (= (get-south-east-diag-vector 50) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 50) [57 50 43 36 29 22 15])))
   (testing "should return vector for square 57"
-    (is (= (get-south-east-diag-vector 57) [57 50 43 36 29 22 15])))
+    (is (= (get-south-east-vector 57) [57 50 43 36 29 22 15])))
 
   (testing "should return vector for square 23"
-    (is (= (get-south-east-diag-vector 23) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 23) [58 51 44 37 30 23])))
   (testing "should return vector for square 30"
-    (is (= (get-south-east-diag-vector 30) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 30) [58 51 44 37 30 23])))
   (testing "should return vector for square 37"
-    (is (= (get-south-east-diag-vector 37) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 37) [58 51 44 37 30 23])))
   (testing "should return vector for square 44"
-    (is (= (get-south-east-diag-vector 44) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 44) [58 51 44 37 30 23])))
   (testing "should return vector for square 51"
-    (is (= (get-south-east-diag-vector 51) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 51) [58 51 44 37 30 23])))
   (testing "should return vector for square 58"
-    (is (= (get-south-east-diag-vector 58) [58 51 44 37 30 23])))
+    (is (= (get-south-east-vector 58) [58 51 44 37 30 23])))
 
   (testing "should return vector for square 31"
-    (is (= (get-south-east-diag-vector 31) [59 52 45 38 31])))
+    (is (= (get-south-east-vector 31) [59 52 45 38 31])))
   (testing "should return vector for square 38"
-    (is (= (get-south-east-diag-vector 38) [59 52 45 38 31])))
+    (is (= (get-south-east-vector 38) [59 52 45 38 31])))
   (testing "should return vector for square 45"
-    (is (= (get-south-east-diag-vector 45) [59 52 45 38 31])))
+    (is (= (get-south-east-vector 45) [59 52 45 38 31])))
   (testing "should return vector for square 52"
-    (is (= (get-south-east-diag-vector 52) [59 52 45 38 31])))
+    (is (= (get-south-east-vector 52) [59 52 45 38 31])))
   (testing "should return vector for square 59"
-    (is (= (get-south-east-diag-vector 59) [59 52 45 38 31])))
+    (is (= (get-south-east-vector 59) [59 52 45 38 31])))
 
   (testing "should return vector for square 39"
-    (is (= (get-south-east-diag-vector 39) [60 53 46 39])))
+    (is (= (get-south-east-vector 39) [60 53 46 39])))
   (testing "should return vector for square 46"
-    (is (= (get-south-east-diag-vector 46) [60 53 46 39])))
+    (is (= (get-south-east-vector 46) [60 53 46 39])))
   (testing "should return vector for square 53"
-    (is (= (get-south-east-diag-vector 53) [60 53 46 39])))
+    (is (= (get-south-east-vector 53) [60 53 46 39])))
   (testing "should return vector for square 60"
-    (is (= (get-south-east-diag-vector 60) [60 53 46 39])))
+    (is (= (get-south-east-vector 60) [60 53 46 39])))
 
   (testing "should return vector for square 47"
-    (is (= (get-south-east-diag-vector 47) [61 54 47])))
+    (is (= (get-south-east-vector 47) [61 54 47])))
   (testing "should return vector for square 54"
-    (is (= (get-south-east-diag-vector 54) [61 54 47])))
+    (is (= (get-south-east-vector 54) [61 54 47])))
   (testing "should return vector for square 61"
-    (is (= (get-south-east-diag-vector 61) [61 54 47])))
+    (is (= (get-south-east-vector 61) [61 54 47])))
 
   (testing "should return vector for square 55"
-    (is (= (get-south-east-diag-vector 55) [62 55])))
+    (is (= (get-south-east-vector 55) [62 55])))
   (testing "should return vector for square 62"
-    (is (= (get-south-east-diag-vector 62) [62 55])))
+    (is (= (get-south-east-vector 62) [62 55])))
 
   (testing "should return vector for square 63"
-    (is (= (get-south-east-diag-vector 63) [63])))
+    (is (= (get-south-east-vector 63) [63])))
 )
 
-(deftest test-get-south-west-diag-vector
+(deftest test-get-south-west-vector
   (testing "should return vector for square 7"
-    (is (= (get-south-west-diag-vector 7) [7])))
+    (is (= (get-south-west-vector 7) [7])))
 
   (testing "should return vector for square 6"
-    (is (= (get-south-west-diag-vector 6) [15 6])))
+    (is (= (get-south-west-vector 6) [15 6])))
   (testing "should return vector for square 15"
-    (is (= (get-south-west-diag-vector 15) [15 6])))
+    (is (= (get-south-west-vector 15) [15 6])))
 
   (testing "should return vector for square 5"
-    (is (= (get-south-west-diag-vector 5) [23 14 5])))
+    (is (= (get-south-west-vector 5) [23 14 5])))
   (testing "should return vector for square 14"
-    (is (= (get-south-west-diag-vector 14) [23 14 5])))
+    (is (= (get-south-west-vector 14) [23 14 5])))
   (testing "should return vector for square 23"
-    (is (= (get-south-west-diag-vector 23) [23 14 5])))
+    (is (= (get-south-west-vector 23) [23 14 5])))
 
   (testing "should return vector for square 4"
-    (is (= (get-south-west-diag-vector 4) [31 22 13 4])))
+    (is (= (get-south-west-vector 4) [31 22 13 4])))
   (testing "should return vector for square 13"
-    (is (= (get-south-west-diag-vector 13) [31 22 13 4])))
+    (is (= (get-south-west-vector 13) [31 22 13 4])))
   (testing "should return vector for square 22"
-    (is (= (get-south-west-diag-vector 22) [31 22 13 4])))
+    (is (= (get-south-west-vector 22) [31 22 13 4])))
   (testing "should return vector for square 31"
-    (is (= (get-south-west-diag-vector 31) [31 22 13 4])))
+    (is (= (get-south-west-vector 31) [31 22 13 4])))
 
   (testing "should return vector for square 3"
-    (is (= (get-south-west-diag-vector 3) [39 30 21 12 3])))
+    (is (= (get-south-west-vector 3) [39 30 21 12 3])))
   (testing "should return vector for square 12"
-    (is (= (get-south-west-diag-vector 12) [39 30 21 12 3])))
+    (is (= (get-south-west-vector 12) [39 30 21 12 3])))
   (testing "should return vector for square 21"
-    (is (= (get-south-west-diag-vector 21) [39 30 21 12 3])))
+    (is (= (get-south-west-vector 21) [39 30 21 12 3])))
   (testing "should return vector for square 30"
-    (is (= (get-south-west-diag-vector 30) [39 30 21 12 3])))
+    (is (= (get-south-west-vector 30) [39 30 21 12 3])))
   (testing "should return vector for square 39"
-    (is (= (get-south-west-diag-vector 39) [39 30 21 12 3])))
+    (is (= (get-south-west-vector 39) [39 30 21 12 3])))
 
   (testing "should return vector for square 2"
-    (is (= (get-south-west-diag-vector 2) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 2) [47 38 29 20 11 2])))
   (testing "should return vector for square 11"
-    (is (= (get-south-west-diag-vector 11) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 11) [47 38 29 20 11 2])))
   (testing "should return vector for square 20"
-    (is (= (get-south-west-diag-vector 20) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 20) [47 38 29 20 11 2])))
   (testing "should return vector for square 29"
-    (is (= (get-south-west-diag-vector 29) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 29) [47 38 29 20 11 2])))
   (testing "should return vector for square 38"
-    (is (= (get-south-west-diag-vector 38) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 38) [47 38 29 20 11 2])))
   (testing "should return vector for square 47"
-    (is (= (get-south-west-diag-vector 47) [47 38 29 20 11 2])))
+    (is (= (get-south-west-vector 47) [47 38 29 20 11 2])))
 
   (testing "should return vector for square 1"
-    (is (= (get-south-west-diag-vector 1) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 1) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 10"
-    (is (= (get-south-west-diag-vector 10) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 10) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 19"
-    (is (= (get-south-west-diag-vector 19) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 19) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 28"
-    (is (= (get-south-west-diag-vector 28) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 28) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 37"
-    (is (= (get-south-west-diag-vector 37) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 37) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 46"
-    (is (= (get-south-west-diag-vector 46) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 46) [55 46 37 28 19 10 1])))
   (testing "should return vector for square 55"
-    (is (= (get-south-west-diag-vector 55) [55 46 37 28 19 10 1])))
+    (is (= (get-south-west-vector 55) [55 46 37 28 19 10 1])))
 
   (testing "should return vector for square 0"
-    (is (= (get-south-west-diag-vector 0) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 0) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 9"
-    (is (= (get-south-west-diag-vector 9) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 9) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 18"
-    (is (= (get-south-west-diag-vector 18) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 18) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 27"
-    (is (= (get-south-west-diag-vector 27) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 27) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 36"
-    (is (= (get-south-west-diag-vector 36) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 36) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 45"
-    (is (= (get-south-west-diag-vector 45) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 45) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 54"
-    (is (= (get-south-west-diag-vector 54) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 54) [63 54 45 36 27 18 9 0])))
   (testing "should return vector for square 63"
-    (is (= (get-south-west-diag-vector 63) [63 54 45 36 27 18 9 0])))
+    (is (= (get-south-west-vector 63) [63 54 45 36 27 18 9 0])))
 
   (testing "should return vector for square 8"
-    (is (= (get-south-west-diag-vector 8) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 8) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 17"
-    (is (= (get-south-west-diag-vector 17) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 17) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 26"
-    (is (= (get-south-west-diag-vector 26) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 26) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 35"
-    (is (= (get-south-west-diag-vector 35) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 35) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 44"
-    (is (= (get-south-west-diag-vector 44) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 44) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 53"
-    (is (= (get-south-west-diag-vector 53) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 53) [62 53 44 35 26 17 8])))
   (testing "should return vector for square 62"
-    (is (= (get-south-west-diag-vector 62) [62 53 44 35 26 17 8])))
+    (is (= (get-south-west-vector 62) [62 53 44 35 26 17 8])))
 
   (testing "should return vector for square 16"
-    (is (= (get-south-west-diag-vector 16) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 16) [61 52 43 34 25 16])))
   (testing "should return vector for square 25"
-    (is (= (get-south-west-diag-vector 25) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 25) [61 52 43 34 25 16])))
   (testing "should return vector for square 34"
-    (is (= (get-south-west-diag-vector 34) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 34) [61 52 43 34 25 16])))
   (testing "should return vector for square 43"
-    (is (= (get-south-west-diag-vector 43) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 43) [61 52 43 34 25 16])))
   (testing "should return vector for square 52"
-    (is (= (get-south-west-diag-vector 52) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 52) [61 52 43 34 25 16])))
   (testing "should return vector for square 61"
-    (is (= (get-south-west-diag-vector 61) [61 52 43 34 25 16])))
+    (is (= (get-south-west-vector 61) [61 52 43 34 25 16])))
 
   (testing "should return vector for square 24"
-    (is (= (get-south-west-diag-vector 24) [60 51 42 33 24])))
+    (is (= (get-south-west-vector 24) [60 51 42 33 24])))
   (testing "should return vector for square 33"
-    (is (= (get-south-west-diag-vector 33) [60 51 42 33 24])))
+    (is (= (get-south-west-vector 33) [60 51 42 33 24])))
   (testing "should return vector for square 42"
-    (is (= (get-south-west-diag-vector 42) [60 51 42 33 24])))
+    (is (= (get-south-west-vector 42) [60 51 42 33 24])))
   (testing "should return vector for square 51"
-    (is (= (get-south-west-diag-vector 51) [60 51 42 33 24])))
+    (is (= (get-south-west-vector 51) [60 51 42 33 24])))
   (testing "should return vector for square 60"
-    (is (= (get-south-west-diag-vector 60) [60 51 42 33 24])))
+    (is (= (get-south-west-vector 60) [60 51 42 33 24])))
 
   (testing "should return vector for square 32"
-    (is (= (get-south-west-diag-vector 32) [59 50 41 32])))
+    (is (= (get-south-west-vector 32) [59 50 41 32])))
   (testing "should return vector for square 41"
-    (is (= (get-south-west-diag-vector 41) [59 50 41 32])))
+    (is (= (get-south-west-vector 41) [59 50 41 32])))
   (testing "should return vector for square 50"
-    (is (= (get-south-west-diag-vector 50) [59 50 41 32])))
+    (is (= (get-south-west-vector 50) [59 50 41 32])))
   (testing "should return vector for square 59"
-    (is (= (get-south-west-diag-vector 59) [59 50 41 32])))
+    (is (= (get-south-west-vector 59) [59 50 41 32])))
 
   (testing "should return vector for square 40"
-    (is (= (get-south-west-diag-vector 40) [58 49 40])))
+    (is (= (get-south-west-vector 40) [58 49 40])))
   (testing "should return vector for square 49"
-    (is (= (get-south-west-diag-vector 49) [58 49 40])))
+    (is (= (get-south-west-vector 49) [58 49 40])))
   (testing "should return vector for square 58"
-    (is (= (get-south-west-diag-vector 58) [58 49 40])))
+    (is (= (get-south-west-vector 58) [58 49 40])))
 
   (testing "should return vector for square 48"
-    (is (= (get-south-west-diag-vector 48) [57 48])))
+    (is (= (get-south-west-vector 48) [57 48])))
   (testing "should return vector for square 57"
-    (is (= (get-south-west-diag-vector 57) [57 48])))
+    (is (= (get-south-west-vector 57) [57 48])))
 
   (testing "should return vector for square 56"
-    (is (= (get-south-west-diag-vector 56) [56])))
+    (is (= (get-south-west-vector 56) [56])))
 )
 
 (deftest test-get-vector-east
@@ -770,8 +770,8 @@
     (test-get-row-vector-from-random-square)
     (test-get-col-vector-from-base-square)
     (test-get-col-vector-from-random-square)
-    (test-get-south-east-diag-vector)
-    (test-get-south-west-diag-vector)
+    (test-get-south-east-vector)
+    (test-get-south-west-vector)
     (test-get-vector-east)
     (test-get-vector-west)
     (test-get-vector-north)

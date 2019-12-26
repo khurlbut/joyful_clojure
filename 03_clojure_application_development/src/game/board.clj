@@ -57,7 +57,7 @@
       7 [7 15 23 31 39 47 55 63]
     )))
 
-(defn get-south-east-diag-vector [s]
+(defn get-south-east-vector [s]
   (let [diag-num (get-south-east-diag-num s)]
     (case diag-num
       0  [0]
@@ -77,7 +77,7 @@
       14 [63]
     )))
 
-(defn get-south-west-diag-vector [s]
+(defn get-south-west-vector [s]
   (let [diag-num (get-south-west-diag-num s)]
     (case diag-num
       7  [7]
@@ -128,17 +128,17 @@
   ([s l] (subvec (get-sub-vector get-col-vector s reverse-vector) 0 l)))
 
 (defn get-vector-north-east
-  ([s] (get-sub-vector get-south-west-diag-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-south-west-diag-vector s reverse-vector) 0 l)))
+  ([s] (get-sub-vector get-south-west-vector s reverse-vector))
+  ([s l] (subvec (get-sub-vector get-south-west-vector s reverse-vector) 0 l)))
 
 (defn get-vector-north-west
-  ([s] (get-sub-vector get-south-east-diag-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-south-east-diag-vector s reverse-vector) 0 l)))
+  ([s] (get-sub-vector get-south-east-vector s reverse-vector))
+  ([s l] (subvec (get-sub-vector get-south-east-vector s reverse-vector) 0 l)))
 
 (defn get-vector-south-east
-  ([s] (get-sub-vector get-south-east-diag-vector s))
-  ([s l] (subvec (get-sub-vector get-south-east-diag-vector s) 0 l)))
+  ([s] (get-sub-vector get-south-east-vector s))
+  ([s l] (subvec (get-sub-vector get-south-east-vector s) 0 l)))
 
 (defn get-vector-south-west
-  ([s] (get-sub-vector get-south-west-diag-vector s))
-  ([s l] (subvec (get-sub-vector get-south-west-diag-vector s) 0 l)))
+  ([s] (get-sub-vector get-south-west-vector s))
+  ([s l] (subvec (get-sub-vector get-south-west-vector s) 0 l)))
