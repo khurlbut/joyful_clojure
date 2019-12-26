@@ -761,6 +761,7 @@
 )
 
 (deftest test-all-game-board
+    (test-get-square)
     (test-get-row-num)
     (test-get-col-num)
     (test-get-south-east-diag-num)

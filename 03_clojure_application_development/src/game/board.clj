@@ -6,7 +6,7 @@
     :cols 8})
 
 (def max-board-index
-  (* (dims :rows) (dims :cols)))
+  (- (* (dims :rows) (dims :cols)) 1))
 
 (defn get-square [s]
   (cond
@@ -127,18 +127,18 @@
   ([s] (get-sub-vector get-col-vector s reverse-vector))
   ([s l] (subvec (get-sub-vector get-col-vector s reverse-vector) 0 l)))
 
-(defn get-vector-south-east
-  ([s] (get-sub-vector get-south-east-diag-vector s))
-  ([s l] (subvec (get-sub-vector get-south-east-diag-vector s) 0 l)))
+(defn get-vector-north-east
+  ([s] (get-sub-vector get-south-west-diag-vector s reverse-vector))
+  ([s l] (subvec (get-sub-vector get-south-west-diag-vector s reverse-vector) 0 l)))
 
 (defn get-vector-north-west
   ([s] (get-sub-vector get-south-east-diag-vector s reverse-vector))
   ([s l] (subvec (get-sub-vector get-south-east-diag-vector s reverse-vector) 0 l)))
 
+(defn get-vector-south-east
+  ([s] (get-sub-vector get-south-east-diag-vector s))
+  ([s l] (subvec (get-sub-vector get-south-east-diag-vector s) 0 l)))
+
 (defn get-vector-south-west
   ([s] (get-sub-vector get-south-west-diag-vector s))
   ([s l] (subvec (get-sub-vector get-south-west-diag-vector s) 0 l)))
-
-(defn get-vector-north-east
-  ([s] (get-sub-vector get-south-west-diag-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-south-west-diag-vector s reverse-vector) 0 l)))
