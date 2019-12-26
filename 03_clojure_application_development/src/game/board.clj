@@ -97,22 +97,29 @@
       -7 [56]
     )))
 
-(defn get-sub-vector [v s]
-  (let [i (.indexOf v s)]
-  (rest (subvec v i))))
+(def reverse-vector true)
+
+(defn get-sub-vector
+  ([f s]
+    (let [v (f s)
+          i (.indexOf v s)
+          sv (subvec v i)]
+        (rest sv)))
+  ([f s r]
+    (let [v (f s)
+          v (vec (rseq v))
+          i (.indexOf v s)
+          sv (subvec v i)]
+        (rest sv))))
 
 (defn get-vector-east [s]
-  (let [r (get-row-vector s)]
-    (get-sub-vector r s)))
+  (get-sub-vector get-row-vector s))
 
 (defn get-vector-west [s]
-  (let [r (vec (rseq (get-row-vector s)))]
-    (get-sub-vector r s)))
+  (get-sub-vector get-row-vector s reverse-vector))
 
 (defn get-vector-north [s]
-  (let [r (get-col-vector s)]
-    (get-sub-vector r s)))
+  (get-sub-vector get-col-vector s))
 
 (defn get-vector-south [s]
-  (let [r (vec (rseq (get-col-vector s)))]
-    (get-sub-vector r s)))
+  (get-sub-vector get-col-vector s reverse-vector))
