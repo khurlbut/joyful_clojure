@@ -687,9 +687,24 @@
     (is (= (get-south-west-diag-vector 56) [56])))
 )
 
-(deftest test-vectors-east
+(deftest test-get-vector-east
   (testing "should return vector [19 20 21 22 23] for square 18"
-    (is (= (get-vector-east 18) [18 19 20 21 22 23])))
+    (is (= (get-vector-east 18) [19 20 21 22 23])))
+)
+
+(deftest test-get-vector-west
+  (testing "should return vector [17 16] for square 18"
+    (is (= (get-vector-west 18) [17 16])))
+)
+
+(deftest test-get-vector-north
+  (testing "should return vector [26 34 42 50 58] for square 18"
+    (is (= (get-vector-north 18) [26 34 42 50 58])))
+)
+
+(deftest test-get-vector-south
+  (testing "should return vector [10 2] for square 18"
+    (is (= (get-vector-south 18) [10 2])))
 )
 
 (deftest test-all-game-board
@@ -703,4 +718,8 @@
     (test-get-col-vector-from-random-square)
     (test-get-south-east-diag-vector)
     (test-get-south-west-diag-vector)
+    (test-get-vector-east)
+    (test-get-vector-west)
+    (test-get-vector-north)
+    (test-get-vector-south)
 )
