@@ -99,11 +99,11 @@
 
 (def reverse-vector true)
 
-; f --> function
-; s --> square
-; r --> reverse
-(defn get-sub-vector
-  ([f s] (get-sub-vector f s false))
+; f --> function (get-row-vector, get-col-vector etc..)
+; s --> square index
+; r --> reverse (false by default)
+(defn- head-subvec
+  ([f s] (head-subvec f s false))
   ([f s r]
     (let [v (f s)
           v (if r (vec (rseq v)) v)
@@ -111,34 +111,39 @@
           sv (subvec v i)]
         (vec (rest sv)))))
 
+(defn- tail-subvec
+  [v l]
+    (let [l (if (> l (count v)) (count v) l)]
+    (subvec v 0 l)))
+
 (defn get-vector-east
-  ([s] (get-sub-vector get-row-vector s))
-  ([s l] (subvec (get-sub-vector get-row-vector s) 0 l)))
+  ([s] (head-subvec get-row-vector s))
+  ([s l] (tail-subvec (head-subvec get-row-vector s) l)))
 
 (defn get-vector-west
-  ([s] (get-sub-vector get-row-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-row-vector s reverse-vector) 0 l)))
+  ([s] (head-subvec get-row-vector s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-row-vector s reverse-vector) l)))
 
 (defn get-vector-north
-  ([s] (get-sub-vector get-col-vector s))
-  ([s l] (subvec (get-sub-vector get-col-vector s) 0 l)))
+  ([s] (head-subvec get-col-vector s))
+  ([s l] (tail-subvec (head-subvec get-col-vector s) l)))
 
 (defn get-vector-south
-  ([s] (get-sub-vector get-col-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-col-vector s reverse-vector) 0 l)))
+  ([s] (head-subvec get-col-vector s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-col-vector s reverse-vector) l)))
 
 (defn get-vector-north-east
-  ([s] (get-sub-vector get-south-west-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-south-west-vector s reverse-vector) 0 l)))
+  ([s] (head-subvec get-south-west-vector s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-south-west-vector s reverse-vector) l)))
 
 (defn get-vector-north-west
-  ([s] (get-sub-vector get-south-east-vector s reverse-vector))
-  ([s l] (subvec (get-sub-vector get-south-east-vector s reverse-vector) 0 l)))
+  ([s] (head-subvec get-south-east-vector s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-south-east-vector s reverse-vector) l)))
 
 (defn get-vector-south-east
-  ([s] (get-sub-vector get-south-east-vector s))
-  ([s l] (subvec (get-sub-vector get-south-east-vector s) 0 l)))
+  ([s] (head-subvec get-south-east-vector s))
+  ([s l] (tail-subvec (head-subvec get-south-east-vector s) l)))
 
 (defn get-vector-south-west
-  ([s] (get-sub-vector get-south-west-vector s))
-  ([s l] (subvec (get-sub-vector get-south-west-vector s) 0 l)))
+  ([s] (head-subvec get-south-west-vector s))
+  ([s l] (tail-subvec (head-subvec get-south-west-vector s) l)))
