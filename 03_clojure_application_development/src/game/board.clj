@@ -99,27 +99,30 @@
 
 (def reverse-vector true)
 
+; f --> function
+; s --> square
+; r --> reverse
 (defn get-sub-vector
-  ([f s]
-    (let [v (f s)
-          i (.indexOf v s)
-          sv (subvec v i)]
-        (rest sv)))
+  ([f s] (get-sub-vector f s false))
   ([f s r]
     (let [v (f s)
-          v (vec (rseq v))
+          v (if r (vec (rseq v)) v)
           i (.indexOf v s)
           sv (subvec v i)]
-        (rest sv))))
+        (vec (rest sv)))))
 
-(defn get-vector-east [s]
-  (get-sub-vector get-row-vector s))
+(defn get-vector-east
+  ([s] (get-sub-vector get-row-vector s))
+  ([s l] (subvec (get-sub-vector get-row-vector s) 0 l)))
 
-(defn get-vector-west [s]
-  (get-sub-vector get-row-vector s reverse-vector))
+(defn get-vector-west
+  ([s] (get-sub-vector get-row-vector s reverse-vector))
+  ([s l] (subvec (get-sub-vector get-row-vector s reverse-vector) 0 l)))
 
-(defn get-vector-north [s]
-  (get-sub-vector get-col-vector s))
+(defn get-vector-north
+  ([s] (get-sub-vector get-col-vector s))
+  ([s l] (subvec (get-sub-vector get-col-vector s) 0 l)))
 
-(defn get-vector-south [s]
-  (get-sub-vector get-col-vector s reverse-vector))
+(defn get-vector-south
+  ([s] (get-sub-vector get-col-vector s reverse-vector))
+  ([s l] (subvec (get-sub-vector get-col-vector s reverse-vector) 0 l)))
