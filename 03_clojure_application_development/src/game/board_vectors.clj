@@ -1,4 +1,4 @@
-(ns game.board
+(ns game.board-vectors
   (:require [game.board-foundation :refer :all]))
 
 (def reverse-vector true)

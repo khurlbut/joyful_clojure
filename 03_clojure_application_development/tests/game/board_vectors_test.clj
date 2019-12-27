@@ -1,6 +1,6 @@
-(ns game.board-test
+(ns game.board-vectors-test
   (:require [clojure.test :refer :all]
-            [game.board :refer :all]))
+            [game.board-vectors :refer :all]))
 
 (deftest test-get-vector-east
   (testing "should return vector [19 20 21 22 23] for square 18"
@@ -75,7 +75,7 @@
     (is (= (get-vector-south-west 18 2) [9 0])))
 )
 
-(deftest test-all-game-board
+(deftest test-all-game-board-vectors
     (test-get-vector-east)
     (test-get-vector-west)
     (test-get-vector-north)
