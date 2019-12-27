@@ -3,7 +3,7 @@
 
 (def reverse-vector true)
 
-; f --> function (get-row-vector, get-col-vector etc..)
+; f --> function (get-row, get-col etc..)
 ; s --> square index
 ; r --> reverse (false by defaulto90p89)
 (defn- head-subvec
@@ -21,33 +21,33 @@
     (subvec v 0 l)))
 
 (defn get-vector-east
-  ([s] (head-subvec get-row-vector s))
-  ([s l] (tail-subvec (head-subvec get-row-vector s) l)))
+  ([s] (head-subvec get-row s))
+  ([s l] (tail-subvec (head-subvec get-row s) l)))
 
 (defn get-vector-west
-  ([s] (head-subvec get-row-vector s reverse-vector))
-  ([s l] (tail-subvec (head-subvec get-row-vector s reverse-vector) l)))
+  ([s] (head-subvec get-row s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-row s reverse-vector) l)))
 
 (defn get-vector-north
-  ([s] (head-subvec get-col-vector s))
-  ([s l] (tail-subvec (head-subvec get-col-vector s) l)))
+  ([s] (head-subvec get-col s))
+  ([s l] (tail-subvec (head-subvec get-col s) l)))
 
 (defn get-vector-south
-  ([s] (head-subvec get-col-vector s reverse-vector))
-  ([s l] (tail-subvec (head-subvec get-col-vector s reverse-vector) l)))
+  ([s] (head-subvec get-col s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-col s reverse-vector) l)))
 
 (defn get-vector-north-east
-  ([s] (head-subvec get-south-west-vector s reverse-vector))
-  ([s l] (tail-subvec (head-subvec get-south-west-vector s reverse-vector) l)))
+  ([s] (head-subvec get-south-west-diagonal s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-south-west-diagonal s reverse-vector) l)))
 
 (defn get-vector-north-west
-  ([s] (head-subvec get-south-east-vector s reverse-vector))
-  ([s l] (tail-subvec (head-subvec get-south-east-vector s reverse-vector) l)))
+  ([s] (head-subvec get-south-east-diagonal s reverse-vector))
+  ([s l] (tail-subvec (head-subvec get-south-east-diagonal s reverse-vector) l)))
 
 (defn get-vector-south-east
-  ([s] (head-subvec get-south-east-vector s))
-  ([s l] (tail-subvec (head-subvec get-south-east-vector s) l)))
+  ([s] (head-subvec get-south-east-diagonal s))
+  ([s l] (tail-subvec (head-subvec get-south-east-diagonal s) l)))
 
 (defn get-vector-south-west
-  ([s] (head-subvec get-south-west-vector s))
-  ([s l] (tail-subvec (head-subvec get-south-west-vector s) l)))
+  ([s] (head-subvec get-south-west-diagonal s))
+  ([s l] (tail-subvec (head-subvec get-south-west-diagonal s) l)))

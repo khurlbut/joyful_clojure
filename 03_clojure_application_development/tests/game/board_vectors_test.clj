@@ -2,6 +2,7 @@
   (:require [clojure.test :refer :all]
             [game.board-vectors :refer :all]))
 
+            
 (deftest test-get-vector-east
   (testing "should return vector [19 20 21 22 23] for square 18"
     (is (= (get-vector-east 18) [19 20 21 22 23])))

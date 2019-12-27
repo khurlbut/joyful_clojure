@@ -31,7 +31,7 @@
 (defn get-south-west-diag-num [s]
   (- (get-col-num s) (get-row-num s)))
 
-(defn get-row-vector [s]
+(defn get-row [s]
   (let [row-num (get-row-num s)]
     (case row-num
       7 [56 57 58 59 60 61 62 63]
@@ -44,7 +44,7 @@
       0 [ 0  1  2  3  4  5  6  7]
     )))
 
-(defn get-col-vector [s]
+(defn get-col [s]
   (let [col-num (get-col-num s)]
     (case col-num
       0 [0  8 16 24 32 40 48 56]
@@ -57,7 +57,7 @@
       7 [7 15 23 31 39 47 55 63]
     )))
 
-(defn get-south-east-vector [s]
+(defn get-south-east-diagonal [s]
   (let [diag-num (get-south-east-diag-num s)]
     (case diag-num
       0  [0]
@@ -77,7 +77,7 @@
       14 [63]
     )))
 
-(defn get-south-west-vector [s]
+(defn get-south-west-diagonal [s]
   (let [diag-num (get-south-west-diag-num s)]
     (case diag-num
       7  [7]
