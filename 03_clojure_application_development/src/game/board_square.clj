@@ -5,14 +5,21 @@
             [game.board-foundation :refer :all]))
 
 ; Square color handling
-(defn row-shifted-square-number [s]
-  ; 'shift' the square number of odd rows (+ 1)
-  (+ (if (= (mod (get-row-num s) 2) 0) 0 1) s))
+; 'shift' the square number of odd rows (+ 1)
+; then apply regular even/odd for black/white
+(defn- row-number-is-even [s]
+  (= (mod (get-row-num s) 2) 0))
 
-(defn shifted-square-num-is-even [s]
+(defn- shift-amount [s]
+  (if (row-number-is-even s) 0 1))
+
+(defn- row-shifted-square-number [s]
+  (+ (shift-amount s) s))
+
+(defn- shifted-square-num-is-even [s]
   (= (mod (row-shifted-square-number s) 2) 0))
 
-(defn color [s]
+(defn- color [s]
   (if (shifted-square-num-is-even s)
     (:black colors)
     (:white colors)))
