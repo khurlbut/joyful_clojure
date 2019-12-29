@@ -1,7 +1,7 @@
 (ns game.board-square
   (:require [clojure.core :refer :all]
             [game.board-vectors :refer :all]
-            [game.board-foundation :refer :all]))
+            [game.board-foundation :refer [get-row-num]]))
 
 (defn row-adjusted-square-number [s]
   (+ (if (= (mod (get-row-num s) 2) 0) 0 1) s))
