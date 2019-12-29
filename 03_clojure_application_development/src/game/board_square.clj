@@ -1,10 +1,18 @@
 (ns game.board-square
   (:require [clojure.core :refer :all]
-            [game.board-vectors :refer :all]))
+            [game.board-vectors :refer :all]
+            [game.board-foundation :refer :all]))
+
+(defn row-adjusted-square-number [s]
+  (+ (if (= (mod (get-row-num s) 2) 0) 0 1) s))
+
+(defn color [s]
+  (if (= (mod (row-adjusted-square-number s) 2) 0) "black" "white"))
 
 (defn square [s]
   (let [sq {
           :id s
+          :color (color s)
           :dirs {
             :north      (get-vector-north      s)
             :north-east (get-vector-north-east s)
