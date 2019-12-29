@@ -1,13 +1,17 @@
 (ns game.board-square
   (:require [clojure.core :refer :all]
+            [game.colors :refer :all]
             [game.board-vectors :refer :all]
-            [game.board-foundation :refer [get-row-num]]))
+            [game.board-foundation :refer :all]))
+
+(def b (:black colors))
+(def w (:white colors))
 
 (defn row-adjusted-square-number [s]
   (+ (if (= (mod (get-row-num s) 2) 0) 0 1) s))
 
 (defn color [s]
-  (if (= (mod (row-adjusted-square-number s) 2) 0) "black" "white"))
+  (if (= (mod (row-adjusted-square-number s) 2) 0) b w))
 
 (defn square [s]
   (let [sq {
