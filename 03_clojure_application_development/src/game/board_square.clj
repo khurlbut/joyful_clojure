@@ -4,14 +4,18 @@
             [game.board-vectors :refer :all]
             [game.board-foundation :refer :all]))
 
-(def b (:black colors))
-(def w (:white colors))
-
-(defn row-adjusted-square-number [s]
+; Square color handling
+(defn row-shifted-square-number [s]
+  ; 'shift' the square number of odd rows (+ 1)
   (+ (if (= (mod (get-row-num s) 2) 0) 0 1) s))
 
+(defn shifted-square-num-is-even [s]
+  (= (mod (row-shifted-square-number s) 2) 0))
+
 (defn color [s]
-  (if (= (mod (row-adjusted-square-number s) 2) 0) b w))
+  (if (shifted-square-num-is-even s)
+    (:black colors)
+    (:white colors)))
 
 (defn square [s]
   (let [sq {
