@@ -1,9 +1,10 @@
 (ns game.board
   (:require [clojure.test :refer :all]
+            [game.board-dimensions :refer :all]
             [game.board-square :refer :all]))
 
 (defn- build-board []
-  (for [i (range 0 64)
+  (for [i (range 0 max-board-squares)
     :let [sq (square i)]]
       sq))
 

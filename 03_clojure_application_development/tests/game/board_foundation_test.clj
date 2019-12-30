@@ -1,5 +1,6 @@
 (ns game.board-foundation-test
   (:require [clojure.test :refer :all]
+            [game.board-dimensions :refer :all]
             [game.board-foundation :refer :all]))
 
 (deftest test-get-square
@@ -9,8 +10,8 @@
     (is (= (get-square 63) 63)))
   (testing "should return nil if requested square is out-of-bounds(< 0)"
     (is (= (get-square -1) nil)))
-  (testing "should return nil if requested square is out-of-bounds (> 63)"
-    (is (= (get-square 64) nil)))
+  (testing "should return nil if requested square is out-of-bounds (> max-board-index)"
+    (is (= (get-square max-board-squares) nil)))
 )
 
 (deftest test-get-row-num

@@ -1,12 +1,5 @@
-(ns game.board-foundation)
-
-(def dims
-  {
-    :rows 8
-    :cols 8})
-
-(def max-board-index
-  (- (* (dims :rows) (dims :cols)) 1))
+(ns game.board-foundation
+    (:require [game.board-dimensions :refer :all]))
 
 (defn get-square [s]
   (cond
