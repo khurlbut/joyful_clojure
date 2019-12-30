@@ -5,13 +5,13 @@
 
 (deftest test-get-square
   (testing "should return  0 if  0 is requested square"
-    (is (= (get-square 0) 0)))
+    (is (= (get-square-id 0) 0)))
   (testing "should return 63 if 63 is requested square"
-    (is (= (get-square 63) 63)))
+    (is (= (get-square-id 63) 63)))
   (testing "should return nil if requested square is out-of-bounds(< 0)"
-    (is (= (get-square -1) nil)))
+    (is (= (get-square-id -1) nil)))
   (testing "should return nil if requested square is out-of-bounds (> max-board-index)"
-    (is (= (get-square max-board-squares) nil)))
+    (is (= (get-square-id max-board-squares) nil)))
 )
 
 (deftest test-get-row-num
