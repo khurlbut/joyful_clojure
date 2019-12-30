@@ -2,7 +2,7 @@
   (:require [clojure.core :refer :all]
             [game.colors :refer :all]
             [game.board-vectors :refer :all]
-            [game.board-foundation :refer :all]))
+            [game.board-foundation :refer [get-row-num]]))
 
 ; Square color handling
 ; 'shift' the square number of odd rows (+ 1 to square num)
