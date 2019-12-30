@@ -5,7 +5,7 @@
             [game.board-foundation :refer :all]))
 
 ; Square color handling
-; 'shift' the square number of odd rows (+ 1)
+; 'shift' the square number of odd rows (+ 1 to square num)
 ; then apply regular even/odd for black/white
 (defn- row-number-is-even [s]
   (= (mod (get-row-num s) 2) 0))
