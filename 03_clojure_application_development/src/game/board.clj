@@ -7,4 +7,7 @@
     :let [sq (square i)]]
       sq))
 
-(defn board [] (vec (build-board)))
+(def game-board (vec (build-board)))
+
+(defn get-square [sq]
+  (get game-board sq))
