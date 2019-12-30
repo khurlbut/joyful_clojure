@@ -1,6 +1,5 @@
 (ns game.board-square
-  (:require [clojure.core :refer :all]
-            [game.colors :refer :all]
+  (:require [game.colors :refer :all]
             [game.board-vectors :refer :all]
             [game.board-foundation :refer [get-row-num]]))
 
