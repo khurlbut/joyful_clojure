@@ -3,7 +3,7 @@
             [game.colors :refer :all]
             [game.board-square :refer :all]))
 
-(deftest test-square-18
+(deftest test-square?-18
   (let [square-18 (square 18)]
   
     (testing "should know the id of the square"

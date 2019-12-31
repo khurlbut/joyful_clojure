@@ -1,5 +1,5 @@
 (ns game.chess.pieces-on-board
-  (:require [game.board-foundation :refer [get-square-id]]
+  (:require [game.board-foundation :refer [square?]]
             [game.chess.piece :refer :all]))
 
 (def pieces-on-board {})

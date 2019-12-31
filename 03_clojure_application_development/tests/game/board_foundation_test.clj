@@ -3,15 +3,15 @@
             [game.board-dimensions :refer :all]
             [game.board-foundation :refer :all]))
 
-(deftest test-get-square
+(deftest test-square?
   (testing "should return  0 if  0 is requested square"
-    (is (= (get-square-id 0) 0)))
+    (is (= (square? 0) 0)))
   (testing "should return 63 if 63 is requested square"
-    (is (= (get-square-id 63) 63)))
+    (is (= (square? 63) 63)))
   (testing "should return nil if requested square is out-of-bounds(< 0)"
-    (is (= (get-square-id -1) nil)))
+    (is (= (square? -1) nil)))
   (testing "should return nil if requested square is out-of-bounds (> max-board-index)"
-    (is (= (get-square-id max-board-squares) nil)))
+    (is (= (square? max-board-squares) nil)))
 )
 
 (deftest test-get-row-num
@@ -689,7 +689,7 @@
 )
 
 (deftest test-all-game-board-foundation
-    (test-get-square)
+    (test-square?)
     (test-get-row-num)
     (test-get-col-num)
     (test-get-south-east-diag-num)
