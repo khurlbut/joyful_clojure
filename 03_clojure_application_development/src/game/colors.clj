@@ -1,3 +1,3 @@
 (ns game.colors)
 
-(def colors {:black "black" :white "white"})
+(def colors {:black "Black" :white "White"})
