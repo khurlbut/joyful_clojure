@@ -4,4 +4,9 @@
 
 (def pieces-on-board {})
 
-(defn set-piece [s p] (def pieces-on-board (assoc pieces-on-board s p)))
+(defn set-piece
+  ([s c r] (set-piece s (new-piece c r)))
+  ([s p] (def pieces-on-board (assoc pieces-on-board s p)))
+)
+
+(defn remove-piece [s] (def pieces-on-board (dissoc pieces-on-board s)))
