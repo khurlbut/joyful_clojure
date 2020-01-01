@@ -11,8 +11,10 @@
 
 (defn remove-piece [s] (def pieces-on-board (dissoc pieces-on-board s)))
 
-(defn get-piece [s] (get pieces-on-board s))
+; (defn get-piece [s] (get pieces-on-board s))
+(defn get-piece [s b] (get b s))
 
-(defn square-occupied [s] (contains? pieces-on-board s))
+; (defn square-occupied [s] (contains? pieces-on-board s))
+(defn square-occupied [s b] (contains? b s))
 
 (defn square-empty [s] (not (square-occupied s)))

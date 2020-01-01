@@ -6,24 +6,26 @@
   (assoc r l (conj (l r) s))
 )
 
-(defn- friend-or-foe [s c]
-  (if (= c (:color (get-piece s))) "friend" "foe"))
+(defn- friend-or-foe [s c b]
+  (if (= c (:color (get-piece b s))) "friend" "foe"))
 
-(defn- add-friend-or-foe [s c r]
-  (if (= "friend" (friend-or-foe s c))
+(defn- add-friend-or-foe [s c r b]
+  (if (= "friend" (friend-or-foe s c b))
     (add-to :friends s r)
     (add-to :foes s r)))
 
-(defn get-vector-data [v c]
-  (loop [remaining v results {} colr c]
+(defn get-vector-data [v c b]
+  (let [colr c
+        board b]
+  (loop [remaining v results {}]
     (if (empty? remaining)
       results
       (let [s (first remaining)]
-        (if (square-occupied s)
-          (add-friend-or-foe s colr results)
+        (if (square-occupied s board)
+          (add-friend-or-foe s colr results board)
           (let [next-remaining (rest remaining)
                 next-results (add-to :moves s results)]
-            (recur next-remaining next-results colr)))))))
+            (recur next-remaining next-results))))))))
 
 (defn get-dirs-map [s]
   (:dirs (get-board-square)))
