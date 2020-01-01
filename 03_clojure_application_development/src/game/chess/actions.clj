@@ -2,19 +2,17 @@
   (:require [game.board :refer [get-board-square]]
             [game.chess.pieces-on-board :refer :all]))
 
-(defn is-end-or-square-occupied [v]
-  (if (or (empty? v) (square-occupied (first v))) true false)
+(defn- add-to [l s r]
+  (assoc r l (conj (l r) s))
 )
 
-(defn friend-or-foe [s c]
-  (let [piece-on-square (get-piece s)
-        color-of-piece (:color piece-on-square)]
-        (if (= c color-of-piece) "friend" "foe")))
+(defn- friend-or-foe [s c]
+  (if (= c (:color (get-piece s))) "friend" "foe"))
 
-(defn categorize-occupant [s c results]
+(defn- add-friend-or-foe [s c r]
   (if (= "friend" (friend-or-foe s c))
-    (assoc results :friends (conj (:friends results) s))
-    (assoc results :foes (conj (:foes results) s))))
+    (add-to :friends s r)
+    (add-to :foes s r)))
 
 (defn get-vector-data [v c]
   (loop [remaining v results {} colr c]
@@ -22,19 +20,11 @@
       results
       (let [s (first remaining)]
         (if (square-occupied s)
-          (categorize-occupant s colr results)
+          (add-friend-or-foe s colr results)
           (let [next-remaining (rest remaining)
-                next-results (assoc results :moves (conj (:moves results) s))]
+                next-results (add-to :moves s results)]
             (recur next-remaining next-results colr)))))))
 
-(defn normalize [v c]
-  (let [results (get-vector-data v c)
-        moves (:moves results)]
-   (assoc results :moves (rseq (vec moves)))))
-
-;
-; (defn- get-squares [s d]
-;   (d (:dirs (get-board-squares))))
 (defn get-dirs-map [s]
   (:dirs (get-board-square)))
 
