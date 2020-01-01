@@ -18,15 +18,15 @@
 (defn- shifted-square-num-is-even [s]
   (= (mod (row-shifted-square-number s) 2) 0))
 
-(defn- color [s]
+(defn- shifted-color [s]
   (if (shifted-square-num-is-even s)
-    (:black colors)
-    (:white colors)))
+    (color :black)
+    (color :white)))
 
 (defn square [s]
   (let [sq {
           :id s
-          :color (color s)
+          :color (shifted-color s)
           :dirs {
             :north (get-vector-north s)
             :south (get-vector-south s)

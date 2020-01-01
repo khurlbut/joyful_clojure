@@ -4,10 +4,9 @@
 
 (defn- build-board []
   (for [i (range 0 max-board-squares)
-    :let [sq (square i)]]
-      sq))
+    :let [s (square i)]]
+  s))
 
 (def game-board (vec (build-board)))
 
-(defn get-square [sq]
-  (get game-board sq))
+(defn get-board-square [s] (get game-board s))

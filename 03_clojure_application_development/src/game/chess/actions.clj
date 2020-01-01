@@ -1,10 +1,10 @@
 (ns game.chess.actions
-  (:require [game.board :refer [get-square]]))
+  (:require [game.board :refer [get-board-square]]))
 ;
 ; (defn- get-squares [s d]
-;   (d (:dirs (get-square s))))
+;   (d (:dirs (get-board-squares))))
 (defn get-dirs-map [s]
-  (:dirs (get-square s)))
+  (:dirs (get-board-square)))
 
 (defn get-dir-squares [s dir]
   (get (get-dirs-map s) dir))

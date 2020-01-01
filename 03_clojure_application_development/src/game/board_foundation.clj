@@ -1,20 +1,20 @@
 (ns game.board-foundation
     (:require [game.board-dimensions :refer :all]))
 
-(defn square? [s]
-  (cond
-    (< s 0) nil
-    (> s max-board-index) nil
-    :else s))
+(def square-indexes (vec (range max-board-squares)))
+
+(defn square-index? [s] (contains? square-indexes s))
+
+(defn square-index [s] (if (square-index? s) s nil))
 
 (defn get-row-num [s]
-  (let [s (square? s)
+  (let [s (square-index s)
         cols (float (dims :cols))
         row (/ s cols)]
         (int row)))
 
 (defn get-col-num [s]
-  (let [s (square? s)
+  (let [s (square-index s)
         cols (dims :cols)]
   (mod s cols)))
 
