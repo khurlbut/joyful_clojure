@@ -4,8 +4,8 @@
 
 (defn new-piece [c r]
   {
-    :color (c colors)
-    :rank (r ranks)
+    :color (color c)
+    :rank (rank r)
   }
 )
 ;
