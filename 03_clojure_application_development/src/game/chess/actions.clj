@@ -7,14 +7,14 @@
 )
 
 (defn- friend-or-foe [s c b]
-  (if (= c (:color (get-piece b s))) "friend" "foe"))
+  (if (= c (:color (get-piece s b))) "friend" "foe"))
 
 (defn- add-friend-or-foe [s c r b]
   (if (= "friend" (friend-or-foe s c b))
     (add-to :friends s r)
     (add-to :foes s r)))
 
-(defn get-vector-data [v c b]
+(defn action-map [v c b]
   (let [colr c
         board b]
   (loop [remaining v results {}]
@@ -27,21 +27,18 @@
                 next-results (add-to :moves s results)]
             (recur next-remaining next-results))))))))
 
-; (defn get-actions [vectors c b]
-;   (let [colr c
-;         board b]
-;   (loop [remaining vectors results {}]
-;     (if (empty? remaining)
-;       results
-;       (let [next-remaining (rest remaining)
-;             next-results (get-vector-data (first remaining) colr board)]
-;         (recur next-remaining next-results))))))
+(defn merge-vector-in-maps
+  [m1 m2 l]
+  (assoc m1 l (concat (l m1) (l m2))))
 
-(defn merge-vectors-in-maps [m1 m2]
-  (let [m1-moves (assoc m1 :moves (concat (:moves m1) (:moves m2)))
-        m1-friends (assoc m1-moves :friends (concat (:friends m1) (:friends m2)))
-        merged-map (assoc m1-friends :foes (concat (:foes m1) (:foes m2)))]
-  merged-map))
+(defn merge-action-maps
+  ([m1 m2 m3 m4] (merge-action-maps (merge-action-maps m1 m2 m3) m4))
+  ([m1 m2 m3] (merge-action-maps (merge-action-maps m1 m2) m3))
+  ([m1 m2]
+  (let [m1-moves (merge-vector-in-maps m1 m2 :moves)
+        m1-friends (merge-vector-in-maps m1-moves m2 :friends)
+        merged-map (merge-vector-in-maps m1-friends m2 :foes)] merged-map))
+)
 
 (defn get-dirs-map [s]
   (:dirs (get-board-square s)))
@@ -49,14 +46,14 @@
 (defn get-dir-squares [s dir]
   (get (get-dirs-map s) dir))
 
-(defn rook-actions [s b]
+(defn rook-actions [s c b]
   (let [N (get-dir-squares s :north)
         S (get-dir-squares s :south)
         E (get-dir-squares s :east)
         W (get-dir-squares s :west)
-        north-action-map (get-vector-data N :white b)
-        south-action-map (get-vector-data S :white b)
-        east-action-map (get-vector-data E :white b)
-        west-action-map (get-vector-data W :white b)
+        north-map (action-map N c b)
+        south-map (action-map S c b)
+        east-map (action-map E c b)
+        west-map (action-map W c b)
         ]
-      (merge-vectors-in-maps north-action-map east-action-map)))
+      (merge-action-maps north-map south-map east-map west-map)))
