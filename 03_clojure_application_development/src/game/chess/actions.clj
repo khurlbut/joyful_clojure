@@ -29,16 +29,23 @@
 
 (defn merge-vector-in-maps
   [m1 m2 l]
-  (assoc m1 l (concat (l m1) (l m2))))
+  (assoc m1 l (vec (concat (l m1) (l m2)))))
 
 (defn merge-action-maps
-  ([m1 m2 m3 m4] (merge-action-maps (merge-action-maps m1 m2 m3) m4))
-  ([m1 m2 m3] (merge-action-maps (merge-action-maps m1 m2) m3))
   ([m1 m2]
   (let [m1-moves (merge-vector-in-maps m1 m2 :moves)
         m1-friends (merge-vector-in-maps m1-moves m2 :friends)
         merged-map (merge-vector-in-maps m1-friends m2 :foes)] merged-map))
 )
+
+; (def m1 {:moves [0 1]})
+; (def m2 {:moves [2 3]})
+; (def m3 {:moves [4 5]})
+; (def m4 {:moves [6 7]})
+; (def m5 {:moves [8 9]})
+; (def m6 {:moves [10 11]})
+; (def m7 {:moves [12 13]})
+; (def m8 {:moves [14 15]})
 
 (defn get-dirs-map [s]
   (:dirs (get-board-square s)))
@@ -56,4 +63,4 @@
         east-map (action-map E c b)
         west-map (action-map W c b)
         ]
-      (merge-action-maps north-map south-map east-map west-map)))
+      (reduce merge-action-maps [north-map south-map east-map west-map])))
