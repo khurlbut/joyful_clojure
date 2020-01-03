@@ -50,5 +50,7 @@
             ;
             :north-2-squares (get-vector-north s 2)
             :south-2-squares (get-vector-south s 2)
+            :east-2-squares  (get-vector-east s 2)
+            :west-2-squares  (get-vector-west s 2)
             }}]
         sq))

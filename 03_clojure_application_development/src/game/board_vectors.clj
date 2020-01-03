@@ -3,6 +3,9 @@
 
 (def reverse-vector true)
 
+(defn pad [n coll val]
+  (take n (concat coll (repeat val))))
+
 ; f --> function (get-row, get-col etc..)
 ; s --> square index
 ; r --> reverse (false by defaulto90p89)
@@ -17,8 +20,9 @@
 
 (defn- tail-subvec
   [v l]
-    (let [l (if (> l (count v)) (count v) l)]
-    (subvec v 0 l)))
+    (if (< (- (count v) l) 0)
+      (vec (pad l v nil))
+      (subvec v 0 l)))
 
 (defn- get-vector
   ([f s] (head-subvec f s))
