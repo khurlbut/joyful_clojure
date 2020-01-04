@@ -13,5 +13,4 @@
 
 (defn get-board-square [s] (get game-board s))
 
-(defn get-vector [s dir]
-  (get (:dirs (get-board-square s)) dir))
+(defn get-vector [s dir] (get (:dirs (get-board-square s)) dir))

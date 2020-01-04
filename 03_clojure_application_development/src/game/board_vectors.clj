@@ -8,17 +8,15 @@
 (defn pad [n coll val]
   (take n (concat coll (repeat val))))
 
-; f --> function (get-row, get-col etc..)
-; s --> square index
-; r --> reverse (false by defaulto90p89)
 (defn- head-subvec
   ([f s] (head-subvec f s false))
   ([f s r]
-    (let [v (f s)
-          v (if r (vec (rseq v)) v)
-          i (.indexOf v s)
-          sv (subvec v i)]
-        (vec (rest sv)))))
+    (let [
+      v (f s)
+      v (if r (vec (rseq v)) v)
+      i (.indexOf v s)
+      sv (subvec v i)]
+    (vec (rest sv)))))
 
 (defn- tail-subvec
   [v l]
