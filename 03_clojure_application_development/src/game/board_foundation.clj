@@ -1,5 +1,7 @@
 (ns game.board-foundation
-    (:require [game.board-dimensions :refer :all]))
+    (:require
+      [game.board-dimensions :refer [dims max-board-squares]]
+      ))
 
 (def square-indexes (vec (range max-board-squares)))
 

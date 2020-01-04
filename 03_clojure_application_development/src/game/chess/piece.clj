@@ -1,6 +1,8 @@
 (ns game.chess.piece
-  (:require [game.colors :refer :all]
-            [game.chess.ranks :refer :all]))
+  (:require
+    [game.colors :refer [color]]
+    [game.chess.ranks :refer [rank]]
+    ))
 
 (defn new-piece [c r]
   {
@@ -8,6 +10,3 @@
     :rank (rank r)
   }
 )
-;
-; (defn piece? [p]
-;   (if (= (p :colors))))

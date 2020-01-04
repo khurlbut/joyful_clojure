@@ -1,5 +1,7 @@
 (ns game.board-vectors
-  (:require [game.board-foundation :refer :all]))
+  (:require
+    [game.board-foundation :refer :all]
+    ))
 
 (def reverse-vector true)
 
@@ -21,8 +23,7 @@
 (defn- tail-subvec
   [v l]
     (if (< (- (count v) l) 0)
-      (vec (pad l v nil))
-      (subvec v 0 l)))
+      (vec (pad l v nil)) (subvec v 0 l)))
 
 (defn- get-vector
   ([f s] (head-subvec f s))

@@ -1,6 +1,7 @@
 (ns game.chess.pieces-on-board
-  (:require [game.board-foundation :refer [square-index]]
-            [game.chess.piece :refer :all]))
+  (:require
+    [game.chess.piece :refer [new-piece]]
+    ))
 
 (def pieces-on-board {})
 
@@ -11,10 +12,8 @@
 
 (defn remove-piece [s] (def pieces-on-board (dissoc pieces-on-board s)))
 
-; (defn get-piece [s] (get pieces-on-board s))
 (defn get-piece [s b] (get b s))
 
-; (defn square-occupied [s] (contains? pieces-on-board s))
 (defn square-occupied [s b] (contains? b s))
 
 (defn square-empty [s] (not (square-occupied s)))
