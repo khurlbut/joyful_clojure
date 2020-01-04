@@ -4,27 +4,21 @@
       ))
 
 (def square-indexes (vec (range max-board-squares)))
-
 (defn square-index? [s] (contains? square-indexes s))
-
 (defn square-index [s] (if (square-index? s) s nil))
 
 (defn get-row-num [s]
-  (let [s (square-index s)
-        cols (float (dims :cols))
-        row (/ s cols)]
-        (int row)))
+  (let [
+    s (square-index s)
+    c (float (dims :cols))
+    r (/ s c)]
+  (int r)))
 
 (defn get-col-num [s]
-  (let [s (square-index s)
-        cols (dims :cols)]
-  (mod s cols)))
-
-(defn get-south-east-diag-num [s]
-  (+ (get-col-num s) (get-row-num s)))
-
-(defn get-south-west-diag-num [s]
-  (- (get-col-num s) (get-row-num s)))
+  (let [
+    s (square-index s)
+    c (dims :cols)]
+  (mod s c)))
 
 (defn get-row [s]
   (let [row-num (get-row-num s)]
@@ -51,6 +45,9 @@
       6 [6 14 22 30 38 46 54 62]
       7 [7 15 23 31 39 47 55 63]
     )))
+
+(defn get-south-east-diag-num [s] (+ (get-col-num s) (get-row-num s)))
+(defn get-south-west-diag-num [s] (- (get-col-num s) (get-row-num s)))
 
 (defn get-south-east-diagonal [s]
   (let [diag-num (get-south-east-diag-num s)]
