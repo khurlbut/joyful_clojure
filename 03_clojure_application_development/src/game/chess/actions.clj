@@ -51,19 +51,42 @@
 
 (defn knight-actions [s c b]
   (let [
-    north-elbow (last (get-vector s :north-2-squares))
-    south-elbow (last (get-vector s :south-2-squares))
-    east-elbow (last (get-vector  s :east-2-squares))
-    west-elbow (last (get-vector  s :west-2-squares))
-    
-    n-n-e (build-action-map (get-vector north-elbow :east-1-square)  c b)
-    n-n-w (build-action-map (get-vector north-elbow :west-1-square)  c b)
-    s-s-e (build-action-map (get-vector south-elbow :east-1-square)  c b)
-    s-s-w (build-action-map (get-vector south-elbow :west-1-square)  c b)
-    e-e-n (build-action-map (get-vector east-elbow  :north-1-square) c b)
-    e-e-s (build-action-map (get-vector east-elbow  :south-1-square) c b)
-    w-w-n (build-action-map (get-vector west-elbow  :north-1-square) c b)
-    w-w-s (build-action-map (get-vector west-elbow  :south-1-square) c b)
+    north-bend (last (get-vector s :north-2-squares))
+    south-bend (last (get-vector s :south-2-squares))
+    east-bend (last (get-vector  s :east-2-squares))
+    west-bend (last (get-vector  s :west-2-squares))
+
+    n-n-e (build-action-map (get-vector north-bend :east-1-square)  c b)
+    n-n-w (build-action-map (get-vector north-bend :west-1-square)  c b)
+    s-s-e (build-action-map (get-vector south-bend :east-1-square)  c b)
+    s-s-w (build-action-map (get-vector south-bend :west-1-square)  c b)
+    e-e-n (build-action-map (get-vector east-bend  :north-1-square) c b)
+    e-e-s (build-action-map (get-vector east-bend  :south-1-square) c b)
+    w-w-n (build-action-map (get-vector west-bend  :north-1-square) c b)
+    w-w-s (build-action-map (get-vector west-bend  :south-1-square) c b)
   ]
   (reduce merge-maps
     [n-n-e, n-n-w, s-s-e, s-s-w, e-e-n, e-e-s, w-w-n, w-w-s])))
+
+(defn pawn-actions [s c b]
+  (let [
+    north-1 (first (get-vector s :north-1-square))
+    south-1 (first (get-vector s :south-1-square))
+    north-2 (last (get-vector s :north-2-squares))
+    south-2 (last (get-vector s :south-2-squares))
+
+    attack-left-north (first (get-vector s :north-west-1-square))
+    attack-left-south (first (get-vector s :south-west-1-square))
+    attack-right-north (first (get-vector s :north-east-1-square))
+    attack-right-south (first (get-vector s :south-east-1-square))
+
+    forward-1 (if (= :white c) north-1 south-1)
+    forward-2 (if (= :white c) north-2 south-2)
+    attack-left (if (= :white c) attack-left-north attack-left-south)
+    attack-right (if (= :white c) attack-right-north attack-right-south)
+  ]
+  (println "forward-1: " forward-1)
+  (println "forward-2: " forward-2)
+  (println "attack-left: " attack-left)
+  (println "attack-right: " attack-right)
+  ))
