@@ -1,6 +1,6 @@
 (ns game.chess.piece-actions
   (:require
-    [game.chess.actions-foundation :refer [build-action-map merge-maps]]
+    [game.chess.piece-action-map :refer [build-action-map merge-maps]]
     [game.board :refer [get-vector]]
     ))
 

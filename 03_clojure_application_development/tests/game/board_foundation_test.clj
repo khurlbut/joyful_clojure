@@ -1,7 +1,9 @@
 (ns game.board-foundation-test
   (:require [clojure.test :refer :all]
+            [game.board-coordinates :refer :all]
             [game.board-dimensions :refer :all]
-            [game.board-foundation :refer :all]))
+            [game.board-foundation :refer :all]
+            ))
 
 (deftest test-square-index
   (testing "should return  0 if  0 is requested square"

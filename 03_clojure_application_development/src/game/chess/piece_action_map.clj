@@ -1,4 +1,4 @@
-(ns game.chess.actions-foundation
+(ns game.chess.piece-action-map
   (:require
     [game.chess.pieces-on-board :refer [square-occupied]]
     [game.chess.friend-or-foe :refer [add-to add-friend-or-foe]]
