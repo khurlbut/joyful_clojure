@@ -9,7 +9,7 @@
 (defn- friend-or-foe [s c b]
   (if (= c (:color (get-piece s b))) "friend" "foe"))
 
-(defn- add-friend-or-foe [s c m b]
+(defn add-friend-or-foe [s c m b]
   (if (= "friend" (friend-or-foe s c b))
     (add-to :friends s m)
     (add-to :foes s m)))
