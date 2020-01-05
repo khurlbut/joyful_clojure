@@ -16,4 +16,4 @@
 
 (defn square-occupied [s b] (contains? b s))
 
-(defn square-empty [s] (not (square-occupied s)))
+(defn square-empty [s b] (not (square-occupied s b)))
