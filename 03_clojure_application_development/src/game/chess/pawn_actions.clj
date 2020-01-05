@@ -7,24 +7,55 @@
     [game.chess.pieces-on-board :refer [square-occupied square-empty pieces-on-board]]
     ))
 
+(def move-forward {
+  :north :north-1-square
+  :south :south-1-square
+  })
+
+(def move-forward-2 {
+  :north :north-2-squares
+  :south :south-2-squares
+  })
+
+(def left-attack {
+  :north :north-west-1-square
+  :south :south-west-1-square
+  })
+
+(def right-attack {
+  :north :north-east-1-square
+  :south :south-east-1-square
+  })
+
+(defn get-square-num [s d]
+  (first (get-vector s d)))
+
+(defn get-last-square-num [s d]
+  (last (get-vector s d)))
+
+(defn action-square [fn s c north-square south-square]
+  (let [
+    n-sq (fn s north-square)
+    s-sq (fn s south-square)
+    ]
+  (if (= :white c) n-sq s-sq)))
+
+(defn action-square-new [fn s c m]
+  (let [
+    n-sq (fn s (:north m))
+    s-sq (fn s (:south m))
+    ]
+  (if (= :white c) n-sq s-sq)))
+
 (defn pawn-actions [s c b]
   (let [
     action-map {}
 
-    north-1 (first (get-vector s :north-1-square))
-    south-1 (first (get-vector s :south-1-square))
-    north-2 (last (get-vector s :north-2-squares))
-    south-2 (last (get-vector s :south-2-squares))
+    forward-1 (action-square-new get-square-num s c move-forward)
+    forward-2 (action-square-new get-last-square-num s c move-forward-2)
 
-    attack-left-north (first (get-vector s :north-west-1-square))
-    attack-left-south (first (get-vector s :south-west-1-square))
-    attack-right-north (first (get-vector s :north-east-1-square))
-    attack-right-south (first (get-vector s :south-east-1-square))
-
-    forward-1 (if (= :white c) north-1 south-1)
-    forward-2 (if (= :white c) north-2 south-2)
-    attack-left (if (= :white c) attack-left-north attack-left-south)
-    attack-right (if (= :white c) attack-right-north attack-right-south)
+    attack-left (action-square-new get-square-num s c left-attack)
+    attack-right (action-square-new get-square-num s c right-attack)
 
     base-row (if (= :white c) 1 6)
     on-base-row (if (= (get-row-num s) base-row) true false)
