@@ -7,69 +7,62 @@
     [game.chess.pieces-on-board :refer [square-occupied square-empty pieces-on-board]]
     ))
 
-(def move-forward {
-  :north :north-1-square
-  :south :south-1-square
+(def move-map {
+  :white :north-1-square
+  :black :south-1-square
   })
 
-(def move-forward-2 {
-  :north :north-2-squares
-  :south :south-2-squares
+(def move-2-map {
+  :white :north-2-squares
+  :black :south-2-squares
   })
 
-(def left-attack {
-  :north :north-west-1-square
-  :south :south-west-1-square
+(def attack-left-map {
+  :white :north-west-1-square
+  :black :south-west-1-square
   })
 
-(def right-attack {
-  :north :north-east-1-square
-  :south :south-east-1-square
+(def attack-right-map {
+  :white :north-east-1-square
+  :black :south-east-1-square
   })
 
-(defn get-square-num [s d]
+(def base-row-map {
+  :white 1
+  :black 6
+  })
+
+(defn- on-base-row [s c]
+  (= (get-row-num s) (c base-row-map)))
+
+(defn- square-num [s d]
   (first (get-vector s d)))
 
-(defn get-last-square-num [s d]
+(defn- last-square-num [s d]
   (last (get-vector s d)))
 
-(defn action-square [fn s c north-square south-square]
-  (let [
-    n-sq (fn s north-square)
-    s-sq (fn s south-square)
-    ]
-  (if (= :white c) n-sq s-sq)))
-
-(defn action-square-new [fn s c m]
-  (let [
-    n-sq (fn s (:north m))
-    s-sq (fn s (:south m))
-    ]
-  (if (= :white c) n-sq s-sq)))
+(defn- square [fn s c m]
+  (fn s (c m)))
 
 (defn pawn-actions [s c b]
   (let [
     action-map {}
 
-    forward-1 (action-square-new get-square-num s c move-forward)
-    forward-2 (action-square-new get-last-square-num s c move-forward-2)
+    move (square square-num s c move-map)
+    move-2 (square last-square-num s c move-2-map)
+    attack-left (square square-num s c attack-left-map)
+    attack-right (square square-num s c attack-right-map)
 
-    attack-left (action-square-new get-square-num s c left-attack)
-    attack-right (action-square-new get-square-num s c right-attack)
-
-    base-row (if (= :white c) 1 6)
-    on-base-row (if (= (get-row-num s) base-row) true false)
-
-    can-move-1 (if (square-empty forward-1 b) true false)
-    two-squares-open (if (and can-move-1 (square-empty forward-2 b)) true false)
-    can-move-2 (if (and on-base-row two-squares-open) true false)
+    can-move-1 (if (square-empty move b) true false)
+    two-squares-open (if (and can-move-1 (square-empty move-2 b)) true false)
+    can-move-2 (if (and (on-base-row s c) two-squares-open) true false)
 
     action-map (if can-move-1
-      (assoc action-map :moves [forward-1])
+      (assoc action-map :moves [move])
       action-map)
 
     action-map (if can-move-2
-      (merge-maps action-map (assoc action-map :moves [forward-2]))
+      (merge-maps action-map (assoc action-map :moves [move-2]))
       action-map)
 
     action-map (if (square-occupied attack-left b)
@@ -79,12 +72,5 @@
     action-map (if (square-occupied attack-right b)
       (add-friend-or-foe attack-right c action-map b)
       action-map)
-  ]
-  ; (println "forward-1: " forward-1)
-  ; (println "forward-2: " forward-2)
-  ; (println "attack-left: " attack-left)
-  ; (println "attack-right: " attack-right)
-  ; (println "can-move-2: " can-move-2)
-  ;  (if can-move-2 (println "WORKS!"))
-
+    ]
   action-map))
