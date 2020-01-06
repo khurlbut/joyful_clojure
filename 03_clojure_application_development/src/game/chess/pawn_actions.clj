@@ -4,7 +4,7 @@
     [game.board-coordinates :refer [get-row-num]]
     [game.chess.piece-action-map :refer [merge-maps]]
     [game.chess.friend-or-foe :refer [add-friend-or-foe]]
-    [game.chess.pieces-on-board :refer [square-occupied square-empty pieces-on-board]]
+    [game.chess.pieces-on-board :refer [square-occupied square-empty]]
     ))
 
 (def move-map {
