@@ -40,6 +40,7 @@
 (defn- move-2 [s c]  (square last-square-num s c move-2-map))
 (defn- attack-left [s c] (square square-num s c attack-left-map))
 (defn- attack-right [s c] (square square-num s c attack-right-map))
+
 (defn- can-move [s c b] (square-empty (move s c) b))
 (defn- two-squares-open [s c b] (and (can-move s c b) (square-empty move-2 b)))
 (defn- can-move-2 [s c b] (and (on-base-row s c) (two-squares-open s c b)))
