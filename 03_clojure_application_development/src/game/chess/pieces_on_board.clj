@@ -3,14 +3,14 @@
     [game.chess.piece :refer [new-piece]]
     ))
 
-(def pieces-on-board {})
-
+; (def pieces-on-board {})
+;
 (defn set-piece
-  ([s c r] (set-piece s (new-piece c r)))
-  ([s p] (def pieces-on-board (assoc pieces-on-board s p)))
+  ([s c r b] (set-piece s (new-piece c r) b))
+  ([s p b] (assoc b s p))
 )
 
-(defn remove-piece [s] (def pieces-on-board (dissoc pieces-on-board s)))
+(defn remove-piece [s b] (dissoc b s))
 
 (defn get-piece [s b] (get b s))
 
