@@ -32,45 +32,39 @@
   :black 6
   })
 
-(defn- on-base-row [s c]
-  (= (get-row-num s) (c base-row-map)))
+(defn- on-base-row [s c] (= (get-row-num s) (c base-row-map)))
+(defn- square-num [s d] (first (get-vector s d)))
+(defn- last-square-num [s d] (last (get-vector s d)))
+(defn- square [f s c m] (f s (c m)))
+(defn- move [s c] (square square-num s c move-map))
+(defn- move-2 [s c]  (square last-square-num s c move-2-map))
+(defn- attack-left [s c] (square square-num s c attack-left-map))
+(defn- attack-right [s c] (square square-num s c attack-right-map))
+(defn- can-move [s c b] (square-empty (move s c) b))
+(defn- two-squares-open [s c b] (and (can-move s c b) (square-empty move-2 b)))
+(defn- can-move-2 [s c b] (and (on-base-row s c) (two-squares-open s c b)))
 
-(defn- square-num [s d]
-  (first (get-vector s d)))
-
-(defn- last-square-num [s d]
-  (last (get-vector s d)))
-
-(defn- square [fn s c m]
-  (fn s (c m)))
+(defn- build-moves-map [s c b]
+  (let [
+    m (if (can-move s c b) (assoc {} :moves [(move s c)]) {})
+    m (if (can-move-2 s c b) (merge-maps m (assoc m :moves [(move-2 s c)])) m)
+  ]
+  m))
 
 (defn pawn-actions [s c b]
   (let [
     action-map {}
+    moves-map (build-moves-map s c b)
 
-    move (square square-num s c move-map)
-    move-2 (square last-square-num s c move-2-map)
-    attack-left (square square-num s c attack-left-map)
-    attack-right (square square-num s c attack-right-map)
+    attack-left (attack-left s c)
+    attack-right (attack-right s c)
 
-    can-move-1 (if (square-empty move b) true false)
-    two-squares-open (if (and can-move-1 (square-empty move-2 b)) true false)
-    can-move-2 (if (and (on-base-row s c) two-squares-open) true false)
+    moves-map (if (square-occupied attack-left b)
+      (add-friend-or-foe attack-left c moves-map b)
+      moves-map)
 
-    action-map (if can-move-1
-      (assoc action-map :moves [move])
-      action-map)
-
-    action-map (if can-move-2
-      (merge-maps action-map (assoc action-map :moves [move-2]))
-      action-map)
-
-    action-map (if (square-occupied attack-left b)
-      (add-friend-or-foe attack-left c action-map b)
-      action-map)
-
-    action-map (if (square-occupied attack-right b)
-      (add-friend-or-foe attack-right c action-map b)
-      action-map)
+    moves-map (if (square-occupied attack-right b)
+      (add-friend-or-foe attack-right c moves-map b)
+      moves-map)
     ]
-  action-map))
+  moves-map))
