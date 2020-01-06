@@ -43,6 +43,8 @@
 (defn- can-move [s c b] (square-empty (move s c) b))
 (defn- two-squares-open [s c b] (and (can-move s c b) (square-empty move-2 b)))
 (defn- can-move-2 [s c b] (and (on-base-row s c) (two-squares-open s c b)))
+(defn- can-attack-left [s c b] (square-occupied (attack-left s c) b))
+(defn- can-attack-right [s c b] (square-occupied (attack-right s c) b))
 
 (defn- build-moves-map [s c b]
   (let [
@@ -53,18 +55,14 @@
 
 (defn pawn-actions [s c b]
   (let [
-    action-map {}
-    moves-map (build-moves-map s c b)
+    actions-map (build-moves-map s c b)
 
-    attack-left (attack-left s c)
-    attack-right (attack-right s c)
+    actions-map (if (can-attack-left s c b)
+      (add-friend-or-foe (attack-left s c) c actions-map b)
+      actions-map)
 
-    moves-map (if (square-occupied attack-left b)
-      (add-friend-or-foe attack-left c moves-map b)
-      moves-map)
-
-    moves-map (if (square-occupied attack-right b)
-      (add-friend-or-foe attack-right c moves-map b)
-      moves-map)
+    actions-map (if (can-attack-right s c b)
+      (add-friend-or-foe (attack-right s c) c actions-map b)
+      actions-map)
     ]
-  moves-map))
+  actions-map))
